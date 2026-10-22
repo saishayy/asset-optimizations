@@ -1,0 +1,10 @@
+{
+  "name": "asset-optimization",
+  "description": "Compress PNG/JPG/JPEG images to WebP and MP3 audio to AAC/M4A or Opus for smaller app bundles, with no visible/audible quality loss.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ayesha Iftikhar"
+  },
+  "repository": "https://github.com/saishayy/asset-optimizationa",
+  "license": "MIT"
+}

@@ -1,0 +1,38 @@
+# Asset Optimization
+
+This repository provides two standalone Python scripts for compressing binary assets before they ship in an app — no visible/audible quality loss.
+
+- `skills/asset-optimization/scripts/convert_images.py` — PNG / JPG / JPEG → WebP (typically 25–50% smaller)
+- `skills/asset-optimization/scripts/compress_audio.py` — MP3 → AAC/M4A or Opus (typically 30–40% smaller)
+
+## When to use
+
+Use these scripts whenever asked to optimize, compress, or shrink image/audio assets, or reduce app bundle size — in this repo or any other project (Flutter, web, or otherwise). They take a target directory as an argument, so they're not tied to this repo's own layout.
+
+## Prerequisites
+
+- Images: `pip install Pillow`
+- Audio: `ffmpeg` on PATH (`brew install ffmpeg` on macOS, https://ffmpeg.org/download.html on Windows)
+
+Both scripts check for their dependency on startup and exit with a clear message if it's missing.
+
+## Usage
+
+Always run with `--dry-run` first to preview what would change before writing or deleting anything.
+
+```bash
+# Images
+python3 skills/asset-optimization/scripts/convert_images.py <dir> --dry-run
+python3 skills/asset-optimization/scripts/convert_images.py <dir> [--quality N] [--keep]
+
+# Audio
+python3 skills/asset-optimization/scripts/compress_audio.py <dir> --dry-run
+python3 skills/asset-optimization/scripts/compress_audio.py <dir> [--bitrate N] [--format aac|opus] [--keep]
+```
+
+- `<dir>` is optional and defaults to `assets/images` / `assets/audio` relative to the current working directory.
+- Originals are **deleted by default** after a successful conversion — pass `--keep` to retain them.
+- Both scripts recurse into subdirectories and print a before/after size summary.
+- Re-running either script is safe: outputs overwrite any existing file of the same name.
+
+Full flag reference and example output: see [README.md](../README.md).

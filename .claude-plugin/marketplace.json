@@ -1,0 +1,14 @@
+{
+  "name": "asset-optimization",
+  "owner": {
+    "name": "Ayesha Iftikhar"
+  },
+  "plugins": [
+    {
+      "name": "asset-optimization",
+      "source": ".",
+      "displayName": "Asset Optimizer",
+      "description": "Compress PNG/JPG/JPEG images to WebP and MP3 audio to AAC/M4A or Opus for smaller app bundles."
+    }
+  ]
+}
