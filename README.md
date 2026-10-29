@@ -1,4 +1,4 @@
-# asset-optimization
+# assets-optimizations
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)
@@ -26,8 +26,8 @@ Works in any project — Flutter, web, or otherwise. Ships as a [Claude Code](ht
 ## Install as a Claude Code plugin (recommended)
 
 ```
-/plugin marketplace add saishayy/asset-optimizationa
-/plugin install asset-optimization@asset-optimization
+/plugin marketplace add saishayy/asset-optimizations
+/plugin install assets-optimizations@assets-optimizations
 ```
 
 Then just ask Claude to "optimize the images/audio in this project" — it will pick up the skill automatically.
@@ -37,8 +37,8 @@ Then just ask Claude to "optimize the images/audio in this project" — it will 
 Clone this repo and copy (or symlink) the skill folder into your Claude Code skills directory:
 
 ```bash
-git clone https://github.com/saishayy/asset-optimizationa.git
-cp -r asset-optimizationa/skills/asset-optimization ~/.claude/skills/
+git clone https://github.com/saishayy/asset-optimizations.git
+cp -r asset-optimizations/skills/assets-optimizations ~/.claude/skills/
 ```
 
 Note: the `SKILL.md` format above is a Claude Code-specific convention — other agents don't auto-discover it. See below.
@@ -49,8 +49,8 @@ Note: the `SKILL.md` format above is a Claude Code-specific convention — other
 
 | Agent            | File                                  |
 | ----------------- | -------------------------------------- |
-| Claude Code        | `skills/asset-optimization/SKILL.md`   |
-| Cursor              | `.cursor/rules/asset-optimization.mdc` |
+| Claude Code        | `skills/assets-optimizations/SKILL.md` |
+| Cursor              | `.cursor/rules/assets-optimizations.mdc` |
 | Gemini CLI          | `GEMINI.md`                            |
 | GitHub Copilot      | `.github/copilot-instructions.md`      |
 | Windsurf            | `.windsurfrules`                       |
@@ -58,7 +58,7 @@ Note: the `SKILL.md` format above is a Claude Code-specific convention — other
 
 `AGENTS.md` follows the emerging [agents.md](https://agents.md) cross-tool convention and is also picked up as a fallback by several other agents beyond Codex.
 
-These files only get auto-discovered by an agent working **in this repo** (or wherever you copy them). If you want a different agent to auto-discover the scripts inside *another* project, copy the matching instruction file — and the `skills/asset-optimization/scripts/` folder — into that project's root. Otherwise, just tell your agent to run the scripts directly (see [Usage](#use-the-scripts-directly-no-claude-code-required) below); every agent with shell access can do that regardless of which convention it reads.
+These files only get auto-discovered by an agent working **in this repo** (or wherever you copy them). If you want a different agent to auto-discover the scripts inside *another* project, copy the matching instruction file — and the `skills/assets-optimizations/scripts/` folder — into that project's root. Otherwise, just tell your agent to run the scripts directly (see [Usage](#use-the-scripts-directly-no-claude-code-required) below); every agent with shell access can do that regardless of which convention it reads.
 
 ## Requirements
 
@@ -74,22 +74,22 @@ Both scripts check for their dependency on startup and exit with a clear message
 **Images:**
 
 ```bash
-python3 skills/asset-optimization/scripts/convert_images.py                # ./assets/images, quality 85
-python3 skills/asset-optimization/scripts/convert_images.py path/to/dir    # custom directory
-python3 skills/asset-optimization/scripts/convert_images.py --quality 90   # 1–100, default 85
-python3 skills/asset-optimization/scripts/convert_images.py --keep         # keep original PNG/JPEGs
-python3 skills/asset-optimization/scripts/convert_images.py --dry-run      # preview only
+python3 skills/assets-optimizations/scripts/convert_images.py                # ./assets/images, quality 85
+python3 skills/assets-optimizations/scripts/convert_images.py path/to/dir    # custom directory
+python3 skills/assets-optimizations/scripts/convert_images.py --quality 90   # 1–100, default 85
+python3 skills/assets-optimizations/scripts/convert_images.py --keep         # keep original PNG/JPEGs
+python3 skills/assets-optimizations/scripts/convert_images.py --dry-run      # preview only
 ```
 
 **Audio:**
 
 ```bash
-python3 skills/asset-optimization/scripts/compress_audio.py                # ./assets/audio, AAC 96kbps
-python3 skills/asset-optimization/scripts/compress_audio.py path/to/dir    # custom directory
-python3 skills/asset-optimization/scripts/compress_audio.py --bitrate 128  # kbps
-python3 skills/asset-optimization/scripts/compress_audio.py --format opus  # Opus (.opus) instead of AAC (.m4a)
-python3 skills/asset-optimization/scripts/compress_audio.py --keep         # keep original MP3s
-python3 skills/asset-optimization/scripts/compress_audio.py --dry-run      # preview only
+python3 skills/assets-optimizations/scripts/compress_audio.py                # ./assets/audio, AAC 96kbps
+python3 skills/assets-optimizations/scripts/compress_audio.py path/to/dir    # custom directory
+python3 skills/assets-optimizations/scripts/compress_audio.py --bitrate 128  # kbps
+python3 skills/assets-optimizations/scripts/compress_audio.py --format opus  # Opus (.opus) instead of AAC (.m4a)
+python3 skills/assets-optimizations/scripts/compress_audio.py --keep         # keep original MP3s
+python3 skills/assets-optimizations/scripts/compress_audio.py --dry-run      # preview only
 ```
 
 Both scripts default to `assets/images` / `assets/audio` relative to wherever you run them from, recurse into subdirectories, delete originals after a successful conversion by default, and print a before/after size summary.
@@ -120,7 +120,7 @@ Both output formats overwrite an existing file of the same name, so re-running e
 ## Example output
 
 ```text
-$ python3 skills/asset-optimization/scripts/convert_images.py assets/images
+$ python3 skills/assets-optimizations/scripts/convert_images.py assets/images
 
 Converting 2 image file(s) in assets/images
 Quality: 85  |  Delete originals: True  |  Dry-run: False
@@ -134,7 +134,7 @@ Quality: 85  |  Delete originals: True  |  Dry-run: False
 ```
 
 ```text
-$ python3 skills/asset-optimization/scripts/compress_audio.py assets/audio --bitrate 128
+$ python3 skills/assets-optimizations/scripts/compress_audio.py assets/audio --bitrate 128
 
 Converting 1 MP3 file(s) in assets/audio
 Format: AAC/M4A  |  Bitrate: 128 kbps  |  Delete originals: True  |  Dry-run: False
@@ -148,17 +148,17 @@ Format: AAC/M4A  |  Bitrate: 128 kbps  |  Delete originals: True  |  Dry-run: Fa
 ## Repo structure
 
 ```text
-asset-optimizationa/
+asset-optimizations/
 ├── .claude-plugin/
 │   ├── plugin.json                   # Claude Code plugin manifest
 │   └── marketplace.json              # makes this repo installable via /plugin marketplace add
 ├── .cursor/
 │   └── rules/
-│       └── asset-optimization.mdc    # Cursor rule
+│       └── assets-optimizations.mdc    # Cursor rule
 ├── .github/
 │   └── copilot-instructions.md       # GitHub Copilot instructions
 ├── skills/
-│   └── asset-optimization/
+│   └── assets-optimizations/
 │       ├── SKILL.md                  # skill instructions Claude reads to use the scripts
 │       └── scripts/
 │           ├── convert_images.py

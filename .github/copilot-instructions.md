@@ -2,8 +2,8 @@
 
 This repository provides two standalone Python scripts for compressing binary assets before they ship in an app — no visible/audible quality loss.
 
-- `skills/asset-optimization/scripts/convert_images.py` — PNG / JPG / JPEG → WebP (typically 25–50% smaller)
-- `skills/asset-optimization/scripts/compress_audio.py` — MP3 → AAC/M4A or Opus (typically 30–40% smaller)
+- `skills/assets-optimizations/scripts/convert_images.py` — PNG / JPG / JPEG → WebP (typically 25–50% smaller)
+- `skills/assets-optimizations/scripts/compress_audio.py` — MP3 → AAC/M4A or Opus (typically 30–40% smaller)
 
 ## When to use
 
@@ -22,12 +22,12 @@ Always run with `--dry-run` first to preview what would change before writing or
 
 ```bash
 # Images
-python3 skills/asset-optimization/scripts/convert_images.py <dir> --dry-run
-python3 skills/asset-optimization/scripts/convert_images.py <dir> [--quality N] [--keep]
+python3 skills/assets-optimizations/scripts/convert_images.py <dir> --dry-run
+python3 skills/assets-optimizations/scripts/convert_images.py <dir> [--quality N] [--keep]
 
 # Audio
-python3 skills/asset-optimization/scripts/compress_audio.py <dir> --dry-run
-python3 skills/asset-optimization/scripts/compress_audio.py <dir> [--bitrate N] [--format aac|opus] [--keep]
+python3 skills/assets-optimizations/scripts/compress_audio.py <dir> --dry-run
+python3 skills/assets-optimizations/scripts/compress_audio.py <dir> [--bitrate N] [--format aac|opus] [--keep]
 ```
 
 - `<dir>` is optional and defaults to `assets/images` / `assets/audio` relative to the current working directory.

@@ -1,5 +1,5 @@
 ---
-name: asset-optimization
+name: assets-optimizations
 description: Compresses image and audio assets before they ship in an app or repo — converts PNG/JPG/JPEG to WebP and MP3 to AAC/M4A (or Opus) with no visible/audible quality loss. Use when the user asks to optimize, compress, or shrink app assets, reduce bundle size, convert images to WebP, or convert audio to M4A/AAC — in any project (Flutter, web, etc.), not tied to one specific app.
 ---
 
